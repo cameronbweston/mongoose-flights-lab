@@ -1,3 +1,4 @@
+import('dotenv/config')
 import createError from 'http-errors'
 import express from 'express'
 import path from 'path'
@@ -5,6 +6,8 @@ import { fileURLToPath } from 'url'
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
 
+//Connect to the database with Mongoose
+import('./config/database.js')
 import { router as indexRouter } from './routes/index.js'
 import { router as usersRouter } from './routes/users.js'
 
