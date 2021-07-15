@@ -9,7 +9,7 @@ import logger from 'morgan'
 //Connect to the database with Mongoose
 import('./config/database.js')
 import { router as indexRouter } from './routes/index.js'
-import { router as usersRouter } from './routes/users.js'
+import { router as usersRouter } from './routes/flights.js'
 
 const app = express()
 
