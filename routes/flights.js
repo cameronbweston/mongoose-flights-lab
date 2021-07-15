@@ -1,11 +1,13 @@
 import { Router } from 'express'
 const router = Router()
-
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource')
-})
+import * as flightsController from '../controllers/flights.js'
 
 export {
   router
 }
+
+//GET localhost:3000/flights/index
+router.get('/', flightsController.index);
+router.get('/new')
+
+
