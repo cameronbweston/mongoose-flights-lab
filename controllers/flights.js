@@ -2,7 +2,8 @@ import { Flight } from "../models/flights.js";
 
 export {
     index,
-    newFlight as new
+    newFlight as new,
+    create
 }
 //function SHOW FLIGHTS INDEX
 //function ALL FLIGHTS
@@ -23,7 +24,12 @@ function  newFlight(req, res) {
 }
 
 //function CREATE FLIGHT
-function createFlight(req, res) {
+function create(req, res) {
     //handle all data and make sure its in the right form
-    
+    const flight = new Flight(req.body);
+    flight.save(function(err) {
+        if (err) return res.redirect('/flights/new')
+        //If no error, redirect back to the flights index page
+        res.redirect('flights/')
+    })
 }

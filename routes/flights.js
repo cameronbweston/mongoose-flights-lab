@@ -9,5 +9,5 @@ export {
 //GET localhost:3000/flights/index
 router.get('/', flightsController.index);
 router.get('/new', flightsController.new);
-
+router.post('/', flightsController.create);
 
