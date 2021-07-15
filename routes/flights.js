@@ -8,6 +8,6 @@ export {
 
 //GET localhost:3000/flights/index
 router.get('/', flightsController.index);
-router.post('/new', flightsController.new);
+router.get('/new', flightsController.new);
 
 
