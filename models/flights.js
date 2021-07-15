@@ -20,6 +20,8 @@ const airports = {
     'LAX': 4,
     'SAN': 5
 }
+Object.freeze(airlines);
+Object.freeze(airports);
 
 //Model
 const flightSchema = new Schema({

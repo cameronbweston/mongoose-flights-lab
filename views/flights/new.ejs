@@ -11,10 +11,20 @@
     <h1>Create a Flight</h1>
     <form action="/flights" method="POST">
       <label>Airline:
-        <input type="text" name="airline">
+        <select name="airline" id="">
+            <option value="1">American</option>
+            <option value="2">Southwest</option>
+            <option value="3">United</option>
+        </select>
       </label><br>
       <label>Airport:
-        <input type="text" name="airport">
+        <select name="airport" id="">
+            <option value="1">AUS</option>
+            <option value="2">DFW</option>
+            <option value="3">DEN</option>
+            <option value="4">LAX</option>
+            <option value="5">SAN</option>
+        </select>
       </label><br>
       <label>Flight Number:
         <input type="text" name="flightNo">
