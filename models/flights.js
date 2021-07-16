@@ -7,7 +7,19 @@ export {
 //optional shortcut to the mongoose.Schema class
 const Schema = mongoose.Schema;
 
-//Model
+const ticketSchema = new Schema({
+    ticket: {
+        seat: {
+            type: String,
+            match: '/[A-F][1-9]\d?/'
+        },
+        price: {
+            type: Number,
+            min: 0
+        }
+    }
+})
+
 const flightSchema = new Schema({
     airline: {
         type: String,
@@ -22,6 +34,7 @@ const flightSchema = new Schema({
         min: 10,
         max: 9999,
     }, //Required Between 10 and 9999
+    tickets: [ticketSchema],
     departs: Date //n/a
 })
 
