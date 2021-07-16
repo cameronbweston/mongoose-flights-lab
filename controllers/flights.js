@@ -4,12 +4,23 @@ export {
     index,
     newFlight as new,
     create,
-    show
+    show,
+    createTicket
+}
+
+function createTicket(req, res) {
+    Flight.findById(req.params.id)
+    .then(flight => {
+        flight.tickets.push(req.body)
+        flight.save()
+        .then(() => {
+            res.redirect(`/flights/${req.params.id}`)
+        })
+    })
 }
 
 //function SHOW INDIVIDUAL FLIGHTS DETAILS
 function show(req, res) {
-    console.log(`flight ID: ${req.params.id}`)
     Flight.findById(req.params.id)
     .then(flight => {
         res.render('flights/show', {

@@ -7,4 +7,13 @@
     <div><b>Airport:</b> <%= flight.airport %></div>
     <div><b>Flight Number: </b><%= flight.flightNo %></div> 
     <div><b>Departs: </b><%= flight.departs %></div>
+
+    <h1>Add Ticket to Flight</h1>
+    <form action="/flights/<%= flight._id %> " method="POST">
+        <label for="seat">Seat</label>
+        <input type="text" name="seat"><br>
+        <label for="price">Price</label>
+        <input type="text" name="price">
+        <button type="submit">submit</button>
+    </form>
 </main>
