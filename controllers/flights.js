@@ -3,10 +3,23 @@ import { Flight } from "../models/flights.js";
 export {
     index,
     newFlight as new,
-    create
+    create,
+    show
 }
-//function SHOW FLIGHTS INDEX
-//function ALL FLIGHTS
+
+//function SHOW INDIVIDUAL FLIGHTS DETAILS
+function show(req, res) {
+    console.log(`flight ID: ${req.params.id}`)
+    Flight.findById(req.params.id)
+    .then(flight => {
+        res.render('flights/show', {
+            title: 'Flight Details',
+            flight
+        })
+    })
+}
+
+//function ALL FLIGHTS (Index)
 function index(req, res) {
     Flight.find({}, function(err, flights) {
         if (err) {
