@@ -35,7 +35,11 @@ const flightSchema = new Schema({
         max: 9999,
     }, //Required Between 10 and 9999
     tickets: [ticketSchema],
-    departs: Date //n/a
+    departs: Date, //n/a
+    destinations: [{
+        type: Schema.Types.ObjectId,
+        ref: "Destination"
+    }]
 }, {
     timestamps: true
 })
