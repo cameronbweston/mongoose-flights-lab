@@ -8,3 +8,5 @@ export {
 
 //GET localhost:3000/destinations/new
 router.get('/new', destinationsController.new);
+//POST localhost:3000/destinations/create
+router.post('/create', destinationsController.create);
