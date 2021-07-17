@@ -5,7 +5,22 @@ export {
     newFlight as new,
     create,
     show,
-    createTicket
+    createTicket,
+    deleteTicket    
+}
+
+function deleteTicket(req, res) {
+    Flight.findById(req.params.id)
+    .then(flight => {
+        flight.tickets.pull(req.params.ticketId);
+        flight.save();
+    })
+    .then(() => {
+        res.redirect(`/flights/${req.params.id}`)
+    })
+    .catch(err => {
+        console.log(err)
+    })
 }
 
 function createTicket(req, res) {

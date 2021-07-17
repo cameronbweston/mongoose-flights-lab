@@ -32,6 +32,12 @@
               <td><%= ticket.createdAt.toLocaleDateString() %></td>
               <td><%= ticket.seat %></td>
               <td><%= ticket.price %></td>
+              <td>
+                <form action="/flights/<%= flight._id%>/tickets/<%= ticket._id %>" 
+                method="POST" id="ticketDelete">
+                  <button type="submit" form="ticketDelete">Delete</button>
+                </form>
+              <td>
             </tr>
           <% }) %>
         </tbody>
