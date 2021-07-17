@@ -12,9 +12,13 @@ function createTicket(req, res) {
     Flight.findById(req.params.id)
     .then(flight => {
         flight.tickets.push(req.body)
+        console.log(`body: ${flight.tickets}`)
         flight.save()
         .then(() => {
             res.redirect(`/flights/${req.params.id}`)
+        })
+        .catch(err => {
+            console.log(err)
         })
     })
 }

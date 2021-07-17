@@ -9,11 +9,34 @@
     <div><b>Departs: </b><%= flight.departs %></div>
 
     <h1>Add Ticket to Flight</h1>
-    <form action="/flights/<%= flight._id %> " method="POST">
-        <label for="seat">Seat</label>
-        <input type="text" name="seat"><br>
+    <form action="/flights/<%= flight._id %>/tickets" method="POST" id="ticket-form">
+        <label for="seat" ></label>Seat</label>
+        <input type="text" name="seat" placeholder="Must be in A-F and 1-9" required pattern="[A-F][1-9]\d?"><br>
         <label for="price">Price</label>
-        <input type="text" name="price">
-        <button type="submit">submit</button>
+        <input type="text" name="price" placeholder="Enter # greater than zero">
+        <button type="submit" form="ticket-form">submit</button>
     </form>
+    <h2>Tickets</h2>
+      <% if (flight.tickets.length) { %>
+      <table>
+        <thead>
+          <tr>
+            <th>Date Purchased</th>
+            <th>Seat</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% flight.tickets.forEach(function(ticket) { %>
+            <tr>
+              <td><%= ticket.createdAt.toLocaleDateString() %></td>
+              <td><%= ticket.seat %></td>
+              <td><%= ticket.price %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <h3>No Tickets</h3>
+    <% } %>
 </main>

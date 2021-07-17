@@ -12,4 +12,4 @@ router.get('/new', flightsController.new);
 router.get('/:id', flightsController.show)
 
 router.post('/', flightsController.create);
-router.post('/:id', flightsController.createTicket)
+router.post('/:id/tickets', flightsController.createTicket)

@@ -8,16 +8,16 @@ export {
 const Schema = mongoose.Schema;
 
 const ticketSchema = new Schema({
-    ticket: {
-        seat: {
-            type: String,
-            match: '/[A-F][1-9]\d?/'
-        },
-        price: {
-            type: Number,
-            min: 0
-        }
+    seat: {
+        type: String,
+        match: /[A-F][1-9]\d?/
+    },
+    price: {
+        type: Number,
+        min: 0
     }
+}, {
+    timestamps: true
 })
 
 const flightSchema = new Schema({
@@ -36,6 +36,8 @@ const flightSchema = new Schema({
     }, //Required Between 10 and 9999
     tickets: [ticketSchema],
     departs: Date //n/a
+}, {
+    timestamps: true
 })
 
 //Compile the schema into a model and export it
