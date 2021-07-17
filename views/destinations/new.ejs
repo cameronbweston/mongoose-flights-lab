@@ -1,0 +1,33 @@
+<%- include('../partials/html-head.ejs') %> 
+<%- include('../partials/nav.ejs') %> 
+  <title>New Destination</title>
+</head>
+<body>
+    <h1>Create a Destination</h1>
+    <form action="???" method="POST">
+      <label>Airline:
+        <select name="airline" id="">
+            <option value="American">American</option>
+            <option value="Southwest">Southwest</option>
+            <option value="United">United</option>
+        </select>
+      </label><br>
+      <label>Airport:
+        <select name="airport" id="">
+            <option value="AUS">AUS</option>
+            <option value="DFW">DFW</option>
+            <option value="DEN">DEN</option>
+            <option value="LAX">LAX</option>
+            <option value="SAN">SAN</option>
+        </select>
+      </label><br>
+      <label>Flight Number:
+        <input type="text" name="flightNo">
+      </label><br>
+      <label>Departs:
+        <input type="text" name="departs">
+      </label><br>
+      <button type="submit">Create Destination</button>
+    </form>
+</body>
+</html>
