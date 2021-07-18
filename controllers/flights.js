@@ -1,22 +1,35 @@
 import { Flight } from "../models/flights.js";
-
+import { Destination } from "../models/destinations.js";
 export {
     index,
     newFlight as new,
     create,
     show,
     createTicket,
-    deleteTicket    
+    deleteTicket,
+    addDestination    
+}
+
+function addDestination(req, res) {
+    Flight.findById(req.params.id)
+    .then(flight => {
+        flight.destinations.push(req.body.id)
+        flight.save()
+        .then(() => {
+            console.log(`Stored destination id: ${req.params.id}`)
+            res.redirect(`/flights/${req.params.id}`)
+        })
+    })
 }
 
 function deleteTicket(req, res) {
     Flight.findById(req.params.id)
     .then(flight => {
-        flight.tickets.pull(req.params.ticketId);
-        flight.save();
-    })
-    .then(() => {
-        res.redirect(`/flights/${req.params.id}`)
+        flight.tickets.pull(req.params.ticketId)
+        flight.save()
+        .then(() => {
+            res.redirect(`/flights/${req.params.id}`)
+        })
     })
     .catch(err => {
         console.log(err)
@@ -42,9 +55,13 @@ function createTicket(req, res) {
 function show(req, res) {
     Flight.findById(req.params.id)
     .then(flight => {
-        res.render('flights/show', {
-            title: 'Flight Details',
-            flight
+        Destination.find({})
+        .then(destinations => {
+            res.render('flights/show', {
+                title: 'Flight Details',
+                flight,
+                destinations
+            })
         })
     })
 }

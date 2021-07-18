@@ -14,4 +14,5 @@ router.get('/:id', flightsController.show)
 router.post('/', flightsController.create);
 router.post('/:id/tickets/:ticketId', flightsController.deleteTicket)
 router.post('/:id/tickets', flightsController.createTicket)
+router.post('/:id/destinations', flightsController.addDestination);
 

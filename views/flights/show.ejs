@@ -43,6 +43,19 @@
         </tbody>
       </table>
     <% } else { %>
-      <h3>No Tickets</h3>
+      <h4>No Tickets Yet</h4>
     <% } %>
+    <h2>Add Destination</h2>
+    <form action="/flights/<%= flight._id %>/destinations" method="POST" id="add-destination">
+      <select name="airport">
+        <% if (destinations.length) { %>
+            <% destinations.forEach(destination => { %>
+              <option value="<%= destination.airport %>"> <%= destination.airport %> </option>
+            <% }) %>
+          <% } else { %>
+              <h4>No Destinations Yet</h4>
+            <% } %> 
+      </select>
+      <button type="submit" form="add-destination">Add</button>
+    </form>
 </main>
