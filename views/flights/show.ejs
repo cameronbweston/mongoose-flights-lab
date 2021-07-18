@@ -9,16 +9,18 @@
     <div><b>Departs: </b><%= flight.departs %></div>
 
     <h1>Add Ticket to Flight</h1>
-    <form action="/flights/<%= flight._id %>/tickets" method="POST" id="ticket-form">
-        <label for="seat" ></label>Seat</label>
-        <input type="text" name="seat" placeholder="Must be in A-F and 1-9" required pattern="[A-F][1-9]\d?"><br>
-        <label for="price">Price</label>
-        <input type="text" name="price" placeholder="Enter # greater than zero">
-        <button type="submit" form="ticket-form">submit</button>
-    </form>
+    <div class="col-md-3">
+      <form action="/flights/<%= flight._id %>/tickets" method="POST" id="ticket-form">
+          <label for="seat" class="form-label"></label>Seat</label>
+          <input type="text" name="seat" placeholder="Must be in A-F and 1-9" required pattern="[A-F][1-9]\d?" class="form-control"><br>
+          <label for="price" class="input-label">Price</label>
+          <input type="text" name="price" placeholder="Enter # greater than zero" class="form-control">
+          <button type="submit" form="ticket-form" class="btn btn-primary">submit</button>
+      </form>
+    </div>
     <h2>Tickets</h2>
       <% if (flight.tickets.length) { %>
-      <table>
+      <table class="table">
         <thead>
           <tr>
             <th>Date Purchased</th>
@@ -47,10 +49,10 @@
     <% } %>
     <h2>Add Destination</h2>
     <form action="/flights/<%= flight._id %>/destinations" method="POST" id="add-destination">
-      <select name="airport">
+      <select name="destinationId">
         <% if (destinations.length) { %>
             <% destinations.forEach(destination => { %>
-              <option value="<%= destination.airport %>"> <%= destination.airport %> </option>
+              <option value="<%= destination._id %>"> <%= destination.airport %> </option>
             <% }) %>
           <% } else { %>
               <h4>No Destinations Yet</h4>
@@ -58,4 +60,22 @@
       </select>
       <button type="submit" form="add-destination">Add</button>
     </form>
+    <% if (destinations.length) { %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Flight Destinations</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% flight.destinations.forEach(function(destination) { %>
+            <tr>
+              <td><%= destination.airport %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <h4>No Destinations Yet</h4>
+    <% } %>
 </main>

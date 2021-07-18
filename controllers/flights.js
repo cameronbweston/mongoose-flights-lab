@@ -11,12 +11,13 @@ export {
 }
 
 function addDestination(req, res) {
+
     Flight.findById(req.params.id)
     .then(flight => {
-        flight.destinations.push(req.body.id)
+        flight.destinations.push(req.body.destinationId)
         flight.save()
         .then(() => {
-            console.log(`Stored destination id: ${req.params.id}`)
+            console.log(`Stored destination id: ${req.body.destinationId}`)
             res.redirect(`/flights/${req.params.id}`)
         })
     })
@@ -54,6 +55,7 @@ function createTicket(req, res) {
 //function SHOW INDIVIDUAL FLIGHTS DETAILS
 function show(req, res) {
     Flight.findById(req.params.id)
+    .populate('destinations')
     .then(flight => {
         Destination.find({})
         .then(destinations => {

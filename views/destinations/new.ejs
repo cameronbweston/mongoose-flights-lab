@@ -5,11 +5,13 @@
 <body>
     <h1>Create a Destination</h1>
     <form action="/destinations/create" method="POST" id="submit-destination">
+    <div class="form-group">
       <label for="Destination">Enter a Destination Airport:</label>
-      <input type="text" name="airport">
+      <input type="text" class="form-control" name="airport">
+    </div>
       <button type="submit" form="submit-destination">submit</button>
     </form>
-    <table>
+    <table class="table">
         <thead>
           <tr>
             <th>List of Destinations</th>
