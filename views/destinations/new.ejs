@@ -7,9 +7,13 @@
     <form action="/destinations/create" method="POST" id="submit-destination">
     <div class="form-group">
       <label for="Destination">Enter a Destination Airport:</label>
-      <input type="text" class="form-control" name="airport">
+      <% if (typeof error !== "undefined") { %>
+      <input type="text" class="form-control" name="airport" placeholder="<%= error %>">
+      <% } else { %>
+        <input type="text" class="form-control" name="airport">
+        <% } %> 
     </div>
-      <button type="submit" form="submit-destination" placeholder="">submit</button>
+    <button type="submit" form="submit-destination">submit</button>
     </form>
     <table class="table">
         <thead>

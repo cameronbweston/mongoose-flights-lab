@@ -12,6 +12,13 @@ function create(req, res) {
     })
     .catch(error => {
         console.log(error)
+        Destination.find({})
+        .then(destinations => {
+            res.render('destinations/new', {
+                destinations,
+                error: 'Can only enter destination once'
+            })
+        })
     })
 }
 
